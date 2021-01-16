@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomerBills
 {
-    public class CustomerType    //i had to change this to public for test
+    public abstract class CustomerType    //i had to change this to public for test
     {
         public int monthly_cost;
         public int included_mins;
