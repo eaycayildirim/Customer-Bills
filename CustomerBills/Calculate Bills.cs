@@ -12,6 +12,7 @@ namespace CustomerBills
 {
     public partial class Form1 : Form
     {
+        private CustomerType type;
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +22,7 @@ namespace CustomerBills
         {
             if (Are_Textboxes_Integers() && Are_Textboxes_Bigger_Than_Zero())
             {
-                label5.Text = (Calculation.Compute(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), RadioButtonChecked())).ToString() + ("\u00A3");
+                label5.Text = (Calculation.compute(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), selectingCustomerType())).ToString() + ("\u00A3");
             }
                 
             else
@@ -54,23 +55,21 @@ namespace CustomerBills
             }
         }
 
-        private CustomerType RadioButtonChecked()
+        private CustomerType selectingCustomerType()
         {
-            if (radioButton1.Checked)
+            if (comboBox1.Text == "Gold")
             {
                 CustomerType type = new GoldType();
-                return type;
             }
-            else if (radioButton2.Checked)
+            else if (comboBox1.Text == "Silver")
             {
                 CustomerType type = new SilverType();
-                return type;
             }
-            else
+            else if (comboBox1.Text == "Bronze")
             {
                 CustomerType type = new BronzeType();
-                return type;
             }
+            return type;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -78,6 +77,12 @@ namespace CustomerBills
             textBox1.Clear();
             textBox2.Clear();
             label5.Text = "-";
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Tariff tariff = new Tariff();
+            tariff.Show();
         }
     }
 }

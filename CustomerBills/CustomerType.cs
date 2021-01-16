@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomerBills
 {
-    public abstract class CustomerType    //i had to change this to public for test
+    public class CustomerType    //i had to change this to public for test
     {
         public int monthly_cost;
         public int included_mins;
@@ -17,7 +17,7 @@ namespace CustomerBills
         public double second_tier_rate;
         public double rate_per_min;
         public double text_cost;
-        public double Calculate(int minutes, int texts)
+        public double calculate(int minutes, int texts)
         {
             double cost = 0;
 
@@ -73,7 +73,7 @@ namespace CustomerBills
             this.text_cost = 0.07;
         }
     }     //i had to change this to public for test
-    class SilverType : CustomerType
+    public class SilverType : CustomerType
     {
         public SilverType()
         {
@@ -106,9 +106,9 @@ namespace CustomerBills
 
     public class Calculation    //i had to change this to public for test
     {
-        static public double Compute(int minutes, int texts, CustomerType type)
+        static public double compute(int minutes, int texts, CustomerType type)
         {
-            return type.Calculate(minutes, texts);
+            return type.calculate(minutes, texts);
         }
     }
 }

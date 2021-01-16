@@ -53,6 +53,12 @@
     <Compile Include="Calculate Bills.Designer.cs">
       <DependentUpon>Calculate Bills.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tariff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tariff.Designer.cs">
+      <DependentUpon>Tariff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Calculate Bills.resx">
@@ -67,6 +73,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Tariff.resx">
+      <DependentUpon>Tariff.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
