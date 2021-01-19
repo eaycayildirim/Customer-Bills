@@ -19,42 +19,29 @@ namespace CustomerBills
         public double text_cost;
         public double calculate(int minutes, int texts)
         {
-            double cost = 0;
+            double cost = monthly_cost;
+            if (texts > included_texts)
+            {
+                cost += ((texts - included_texts) * text_cost);
+            }
 
             if (minutes > included_mins + first_tier_mins + second_tier_mins)
             {
-                if (texts > included_texts)
-                {
-                    cost = ((texts - included_texts) * text_cost);
-                }
-                cost += monthly_cost + ((first_tier_mins * first_tier_rate) + (second_tier_mins * second_tier_rate) + ((minutes - (included_mins + first_tier_mins + second_tier_mins)) * rate_per_min));
+                cost += ((first_tier_mins * first_tier_rate) + (second_tier_mins * second_tier_rate) + ((minutes - (included_mins + first_tier_mins + second_tier_mins)) * rate_per_min));
                 return cost;
             }
             else if (minutes > included_mins + first_tier_mins && minutes <= included_mins + first_tier_mins + second_tier_mins)
             {
-                if (texts > included_texts)
-                {
-                    cost = ((texts - included_texts) * text_cost);
-                }
-                cost += monthly_cost + ((first_tier_mins * first_tier_rate) + ((minutes - (included_mins + first_tier_mins)) * second_tier_rate));
+                cost += ((first_tier_mins * first_tier_rate) + ((minutes - (included_mins + first_tier_mins)) * second_tier_rate));
                 return cost;
             }
             else if (minutes > included_mins && minutes <= included_mins + first_tier_mins)
             {
-                if (texts > included_texts)
-                {
-                    cost = ((texts - included_texts) * text_cost);
-                }
-                cost += monthly_cost + (minutes - included_mins) * first_tier_rate;
-                return cost;
-            }
-            else if (texts > included_texts)
-            {
-                cost += monthly_cost + ((texts - included_texts) * text_cost);
+                cost += (minutes - included_mins) * first_tier_rate;
                 return cost;
             }
             else
-                return monthly_cost;
+                return cost;
         }
     }
 

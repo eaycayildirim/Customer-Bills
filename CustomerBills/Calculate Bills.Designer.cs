@@ -36,9 +36,9 @@ namespace CustomerBills
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.calculateButton = new System.Windows.Forms.Button();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.addTariffButton = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
@@ -112,38 +112,38 @@ namespace CustomerBills
             this.label5.TabIndex = 9;
             this.label5.Text = "-";
             // 
-            // button1
+            // calculateButton
             // 
-            this.button1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(24, 188);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 37);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "CALCULATE";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.calculateButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.calculateButton.Location = new System.Drawing.Point(24, 188);
+            this.calculateButton.Name = "calculateButton";
+            this.calculateButton.Size = new System.Drawing.Size(129, 37);
+            this.calculateButton.TabIndex = 10;
+            this.calculateButton.Text = "CALCULATE";
+            this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
             // 
-            // button2
+            // clearButton
             // 
-            this.button2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button2.Location = new System.Drawing.Point(189, 188);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(129, 37);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "CLEAR";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.clearButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.clearButton.Location = new System.Drawing.Point(189, 188);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(129, 37);
+            this.clearButton.TabIndex = 11;
+            this.clearButton.Text = "CLEAR";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
-            // button3
+            // addTariffButton
             // 
-            this.button3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(345, 26);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 38);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "ADD TARIFF";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.addTariffButton.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.addTariffButton.Location = new System.Drawing.Point(345, 26);
+            this.addTariffButton.Name = "addTariffButton";
+            this.addTariffButton.Size = new System.Drawing.Size(116, 38);
+            this.addTariffButton.TabIndex = 12;
+            this.addTariffButton.Text = "ADD TARIFF";
+            this.addTariffButton.UseVisualStyleBackColor = true;
+            this.addTariffButton.Click += new System.EventHandler(this.addTariffButton_Click);
             // 
             // comboBox1
             // 
@@ -165,9 +165,9 @@ namespace CustomerBills
             this.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.ClientSize = new System.Drawing.Size(484, 322);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.addTariffButton);
+            this.Controls.Add(this.clearButton);
+            this.Controls.Add(this.calculateButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox2);
@@ -191,9 +191,9 @@ namespace CustomerBills
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button calculateButton;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Button addTariffButton;
         private System.Windows.Forms.ComboBox comboBox1;
     }
 }

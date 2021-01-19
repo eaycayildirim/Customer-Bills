@@ -18,9 +18,9 @@ namespace CustomerBills
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void calculateButton_Click(object sender, EventArgs e)
         {
-            if (Are_Textboxes_Integers() && Are_Textboxes_Bigger_Than_Zero())
+            if (areTextboxesIntegers() && areTextboxesBiggerThanZero())
             {
                 label5.Text = (Calculation.compute(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), selectingCustomerType())).ToString() + ("\u00A3");
             }
@@ -29,16 +29,14 @@ namespace CustomerBills
                 MessageBox.Show("Please provide valid numbers only.", "ERROR", MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
 
-        private bool Are_Textboxes_Integers()
+        private bool areTextboxesIntegers()
         {
-            int minutes_converted_to_int;
-            int texts_converted_to_int;
-            if (int.TryParse(textBox1.Text, out minutes_converted_to_int) && int.TryParse(textBox1.Text, out texts_converted_to_int))
+            if (int.TryParse(textBox1.Text, out _) && int.TryParse(textBox1.Text, out _))
                 return true;
             else
                 return false;
         }
-        private bool Are_Textboxes_Bigger_Than_Zero()
+        private bool areTextboxesBiggerThanZero()
         {
             try
             {
@@ -59,27 +57,33 @@ namespace CustomerBills
         {
             if (comboBox1.Text == "Gold")
             {
-                CustomerType type = new GoldType();
+                return new GoldType();
             }
             else if (comboBox1.Text == "Silver")
             {
-                CustomerType type = new SilverType();
+                return new SilverType();
             }
             else if (comboBox1.Text == "Bronze")
             {
-                CustomerType type = new BronzeType();
+                return new BronzeType();
             }
-            return type;
+            else
+            {
+                Tariff tariff = new Tariff();
+                tariff.addCustomerType();
+            }
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
+
+        private void clearButton_Click(object sender, EventArgs e)
         {
             textBox1.Clear();
             textBox2.Clear();
             label5.Text = "-";
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void addTariffButton_Click(object sender, EventArgs e)
         {
             Tariff tariff = new Tariff();
             tariff.Show();
