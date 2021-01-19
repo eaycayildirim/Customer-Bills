@@ -88,7 +88,7 @@ namespace CustomerBills
             this.text_cost = 0.09;
         }
     }
-    class BronzeType : CustomerType
+    public class BronzeType : CustomerType
     {
         public BronzeType()
         {
