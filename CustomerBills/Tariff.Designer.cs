@@ -32,15 +32,15 @@ namespace CustomerBills
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textMessageCostTextbox = new System.Windows.Forms.TextBox();
+            this.ratePerMinTextbox = new System.Windows.Forms.TextBox();
+            this.secondTierRateTextbox = new System.Windows.Forms.TextBox();
+            this.secondTierMinsTextbox = new System.Windows.Forms.TextBox();
+            this.firstTierRateTextbox = new System.Windows.Forms.TextBox();
+            this.firstTierMinsTextbox = new System.Windows.Forms.TextBox();
+            this.includedTextsTextbox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.includedMinsTextbox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -48,9 +48,9 @@ namespace CustomerBills
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.monthlyCostTextbox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tariffNameTextbox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -59,15 +59,15 @@ namespace CustomerBills
             // 
             this.groupBox1.Controls.Add(this.cancelButton);
             this.groupBox1.Controls.Add(this.addButton);
-            this.groupBox1.Controls.Add(this.textBox10);
-            this.groupBox1.Controls.Add(this.textBox9);
-            this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox7);
-            this.groupBox1.Controls.Add(this.textBox6);
-            this.groupBox1.Controls.Add(this.textBox5);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.textMessageCostTextbox);
+            this.groupBox1.Controls.Add(this.ratePerMinTextbox);
+            this.groupBox1.Controls.Add(this.secondTierRateTextbox);
+            this.groupBox1.Controls.Add(this.secondTierMinsTextbox);
+            this.groupBox1.Controls.Add(this.firstTierRateTextbox);
+            this.groupBox1.Controls.Add(this.firstTierMinsTextbox);
+            this.groupBox1.Controls.Add(this.includedTextsTextbox);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.includedMinsTextbox);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label7);
@@ -75,9 +75,9 @@ namespace CustomerBills
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.monthlyCostTextbox);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tariffNameTextbox);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -110,61 +110,61 @@ namespace CustomerBills
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
             // 
-            // textBox10
+            // textMessageCostTextbox
             // 
-            this.textBox10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox10.Location = new System.Drawing.Point(617, 172);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(142, 25);
-            this.textBox10.TabIndex = 20;
+            this.textMessageCostTextbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textMessageCostTextbox.Location = new System.Drawing.Point(617, 172);
+            this.textMessageCostTextbox.Name = "textMessageCostTextbox";
+            this.textMessageCostTextbox.Size = new System.Drawing.Size(142, 25);
+            this.textMessageCostTextbox.TabIndex = 20;
             // 
-            // textBox9
+            // ratePerMinTextbox
             // 
-            this.textBox9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox9.Location = new System.Drawing.Point(617, 128);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(142, 25);
-            this.textBox9.TabIndex = 19;
+            this.ratePerMinTextbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ratePerMinTextbox.Location = new System.Drawing.Point(617, 128);
+            this.ratePerMinTextbox.Name = "ratePerMinTextbox";
+            this.ratePerMinTextbox.Size = new System.Drawing.Size(142, 25);
+            this.ratePerMinTextbox.TabIndex = 19;
             // 
-            // textBox8
+            // secondTierRateTextbox
             // 
-            this.textBox8.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox8.Location = new System.Drawing.Point(617, 83);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(142, 25);
-            this.textBox8.TabIndex = 18;
+            this.secondTierRateTextbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.secondTierRateTextbox.Location = new System.Drawing.Point(617, 83);
+            this.secondTierRateTextbox.Name = "secondTierRateTextbox";
+            this.secondTierRateTextbox.Size = new System.Drawing.Size(142, 25);
+            this.secondTierRateTextbox.TabIndex = 18;
             // 
-            // textBox7
+            // secondTierMinsTextbox
             // 
-            this.textBox7.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox7.Location = new System.Drawing.Point(617, 43);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(142, 25);
-            this.textBox7.TabIndex = 17;
+            this.secondTierMinsTextbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.secondTierMinsTextbox.Location = new System.Drawing.Point(617, 43);
+            this.secondTierMinsTextbox.Name = "secondTierMinsTextbox";
+            this.secondTierMinsTextbox.Size = new System.Drawing.Size(142, 25);
+            this.secondTierMinsTextbox.TabIndex = 17;
             // 
-            // textBox6
+            // firstTierRateTextbox
             // 
-            this.textBox6.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox6.Location = new System.Drawing.Point(215, 265);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(143, 25);
-            this.textBox6.TabIndex = 16;
+            this.firstTierRateTextbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.firstTierRateTextbox.Location = new System.Drawing.Point(215, 265);
+            this.firstTierRateTextbox.Name = "firstTierRateTextbox";
+            this.firstTierRateTextbox.Size = new System.Drawing.Size(143, 25);
+            this.firstTierRateTextbox.TabIndex = 16;
             // 
-            // textBox5
+            // firstTierMinsTextbox
             // 
-            this.textBox5.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox5.Location = new System.Drawing.Point(215, 218);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(143, 25);
-            this.textBox5.TabIndex = 15;
+            this.firstTierMinsTextbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.firstTierMinsTextbox.Location = new System.Drawing.Point(215, 218);
+            this.firstTierMinsTextbox.Name = "firstTierMinsTextbox";
+            this.firstTierMinsTextbox.Size = new System.Drawing.Size(143, 25);
+            this.firstTierMinsTextbox.TabIndex = 15;
             // 
-            // textBox4
+            // includedTextsTextbox
             // 
-            this.textBox4.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox4.Location = new System.Drawing.Point(215, 172);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(143, 25);
-            this.textBox4.TabIndex = 14;
+            this.includedTextsTextbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.includedTextsTextbox.Location = new System.Drawing.Point(215, 172);
+            this.includedTextsTextbox.Name = "includedTextsTextbox";
+            this.includedTextsTextbox.Size = new System.Drawing.Size(143, 25);
+            this.includedTextsTextbox.TabIndex = 14;
             // 
             // label10
             // 
@@ -176,13 +176,13 @@ namespace CustomerBills
             this.label10.TabIndex = 13;
             this.label10.Text = "Text Message Cost:";
             // 
-            // textBox3
+            // includedMinsTextbox
             // 
-            this.textBox3.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox3.Location = new System.Drawing.Point(215, 128);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(143, 25);
-            this.textBox3.TabIndex = 12;
+            this.includedMinsTextbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.includedMinsTextbox.Location = new System.Drawing.Point(215, 128);
+            this.includedMinsTextbox.Name = "includedMinsTextbox";
+            this.includedMinsTextbox.Size = new System.Drawing.Size(143, 25);
+            this.includedMinsTextbox.TabIndex = 12;
             // 
             // label9
             // 
@@ -254,13 +254,13 @@ namespace CustomerBills
             this.label3.TabIndex = 5;
             this.label3.Text = "Included Minutes:";
             // 
-            // textBox2
+            // monthlyCostTextbox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox2.Location = new System.Drawing.Point(215, 83);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(143, 25);
-            this.textBox2.TabIndex = 4;
+            this.monthlyCostTextbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.monthlyCostTextbox.Location = new System.Drawing.Point(215, 83);
+            this.monthlyCostTextbox.Name = "monthlyCostTextbox";
+            this.monthlyCostTextbox.Size = new System.Drawing.Size(143, 25);
+            this.monthlyCostTextbox.TabIndex = 4;
             // 
             // label2
             // 
@@ -272,13 +272,13 @@ namespace CustomerBills
             this.label2.TabIndex = 3;
             this.label2.Text = "Monthly Cost:";
             // 
-            // textBox1
+            // tariffNameTextbox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox1.Location = new System.Drawing.Point(215, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(143, 25);
-            this.textBox1.TabIndex = 2;
+            this.tariffNameTextbox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.tariffNameTextbox.Location = new System.Drawing.Point(215, 40);
+            this.tariffNameTextbox.Name = "tariffNameTextbox";
+            this.tariffNameTextbox.Size = new System.Drawing.Size(143, 25);
+            this.tariffNameTextbox.TabIndex = 2;
             // 
             // label1
             // 
@@ -297,6 +297,8 @@ namespace CustomerBills
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(797, 311);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
             this.Name = "Tariff";
             this.Text = "Tariff";
             this.groupBox1.ResumeLayout(false);
@@ -310,15 +312,15 @@ namespace CustomerBills
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textMessageCostTextbox;
+        private System.Windows.Forms.TextBox ratePerMinTextbox;
+        private System.Windows.Forms.TextBox secondTierRateTextbox;
+        private System.Windows.Forms.TextBox secondTierMinsTextbox;
+        private System.Windows.Forms.TextBox firstTierRateTextbox;
+        private System.Windows.Forms.TextBox firstTierMinsTextbox;
+        private System.Windows.Forms.TextBox includedTextsTextbox;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox includedMinsTextbox;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -326,9 +328,9 @@ namespace CustomerBills
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox monthlyCostTextbox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tariffNameTextbox;
         private System.Windows.Forms.Label label1;
     }
 }

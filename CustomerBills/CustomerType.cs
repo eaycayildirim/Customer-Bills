@@ -6,6 +6,23 @@ using System.Threading.Tasks;
 
 namespace CustomerBills
 {
+    class Tariffs
+    {
+        private List<CustomerType> customer_type = new List<CustomerType>();
+        private CustomerType type;
+        public Tariffs()
+        {
+            customer_type.Add(new GoldType());
+            customer_type.Add(new SilverType());
+            customer_type.Add(new BronzeType());
+        }
+
+        public void addNewTariff(CustomerType type)
+        {
+            customer_type.Add(type);
+        }
+    }
+
     public class CustomerType    //i had to change this to public for test
     {
         public int monthly_cost;
@@ -17,7 +34,7 @@ namespace CustomerBills
         public double second_tier_rate;
         public double rate_per_min;
         public double text_cost;
-        public double calculate(int minutes, int texts)
+        public double calculate(double minutes, double texts)
         {
             double cost = monthly_cost;
             if (texts > included_texts)
@@ -93,7 +110,7 @@ namespace CustomerBills
 
     public class Calculation    //i had to change this to public for test
     {
-        static public double compute(int minutes, int texts, CustomerType type)
+        static public double compute(double minutes, double texts, CustomerType type)
         {
             return type.calculate(minutes, texts);
         }

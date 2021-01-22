@@ -13,80 +13,52 @@ namespace CustomerBills
     public partial class Form1 : Form
     {
         private CustomerType type;
+        
         public Form1()
         {
             InitializeComponent();
         }
 
+        public void addItemToComboBox(object item)
+        {
+            customerTypeComboBox.Items.Add(item);
+        }
         private void calculateButton_Click(object sender, EventArgs e)
         {
-            if (areTextboxesIntegers() && areTextboxesBiggerThanZero())
-            {
-                label5.Text = (Calculation.compute(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), selectingCustomerType())).ToString() + ("\u00A3");
-            }
-                
-            else
-                MessageBox.Show("Please provide valid numbers only.", "ERROR", MessageBoxButtons.OK,MessageBoxIcon.Error);
-        }
-
-        private bool areTextboxesIntegers()
-        {
-            if (int.TryParse(textBox1.Text, out _) && int.TryParse(textBox1.Text, out _))
-                return true;
-            else
-                return false;
-        }
-        private bool areTextboxesBiggerThanZero()
-        {
-            try
-            {
-                int minutes_converted_to_int = Convert.ToInt32(textBox1.Text);
-                int texts_converted_to_int = Convert.ToInt32(textBox2.Text);
-                if (minutes_converted_to_int > 0 && texts_converted_to_int > 0)
-                    return true;
-                else
-                    return false;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            totalBillLabel.Text = Calculation.compute(Convert.ToDouble(totalMinutesTextbox.Text), Convert.ToDouble(totalTextsTextbox.Text), selectingCustomerType()).ToString() + ("\u00A3");
         }
 
         private CustomerType selectingCustomerType()
         {
-            if (comboBox1.Text == "Gold")
-            {
+            if (customerTypeComboBox.Text == "Gold")
                 return new GoldType();
-            }
-            else if (comboBox1.Text == "Silver")
-            {
-                return new SilverType();
-            }
-            else if (comboBox1.Text == "Bronze")
-            {
-                return new BronzeType();
-            }
-            else
-            {
-                Tariff tariff = new Tariff();
-                tariff.addCustomerType();
-            }
 
+            else if (customerTypeComboBox.Text == "Silver")
+                return new SilverType();
+
+            else
+                return new BronzeType();
+
+            /*return new GoldType();*/                //**
         }
 
 
         private void clearButton_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            textBox2.Clear();
-            label5.Text = "-";
+            totalMinutesTextbox.Clear();
+            totalTextsTextbox.Clear();
+            totalBillLabel.Text = "-";
         }
 
         private void addTariffButton_Click(object sender, EventArgs e)
         {
             Tariff tariff = new Tariff();
             tariff.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }
