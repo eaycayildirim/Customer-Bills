@@ -8,14 +8,7 @@ namespace CustomerBills
 {
     class Tariffs
     {
-        private List<CustomerType> customer_type = new List<CustomerType>();
-        private CustomerType type;
-        public Tariffs()
-        {
-            customer_type.Add(new GoldType());
-            customer_type.Add(new SilverType());
-            customer_type.Add(new BronzeType());
-        }
+        public List<CustomerType> customer_type = new List<CustomerType>() { new Gold(), new Silver(), new Bronze() };
 
         public void addNewTariff(CustomerType type)
         {
@@ -25,7 +18,7 @@ namespace CustomerBills
 
     public class CustomerType    //i had to change this to public for test
     {
-        public int monthly_cost;
+        private int monthly_cost=30;
         public int included_mins;
         public int included_texts;
         public int first_tier_mins;
@@ -62,11 +55,11 @@ namespace CustomerBills
         }
     }
 
-    public class GoldType : CustomerType
+    public class Gold : CustomerType
     {
-        public GoldType()
+        public Gold()
         {
-            this.monthly_cost = 30;
+            //this.monthly_cost = 30;
             this.included_mins = 1000;
             this.included_texts = 800;
             this.first_tier_mins = 500;
@@ -76,12 +69,13 @@ namespace CustomerBills
             this.rate_per_min = 0.05;
             this.text_cost = 0.07;
         }
-    }     //i had to change this to public for test
-    public class SilverType : CustomerType
+    }
+
+    public class Silver : CustomerType
     {
-        public SilverType()
+        public Silver()
         {
-            this.monthly_cost = 20;
+            //this.monthly_cost = 20;
             this.included_mins = 500;
             this.included_texts = 400;
             this.first_tier_mins = 300;
@@ -92,11 +86,12 @@ namespace CustomerBills
             this.text_cost = 0.09;
         }
     }
-    public class BronzeType : CustomerType
+
+    public class Bronze : CustomerType
     {
-        public BronzeType()
+        public Bronze()
         {
-            this.monthly_cost = 10;
+            //this.monthly_cost = 10;
             this.included_mins = 200;
             this.included_texts = 100;
             this.first_tier_mins = 150;

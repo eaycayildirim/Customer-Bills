@@ -20,14 +20,16 @@ namespace CustomerBills
         private void cancelButton_Click(object sender, EventArgs e)
         {
             this.Close();
+            Form1 frm1 = new Form1();
+            frm1.Show();
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
+            addCustomer();
             this.Close();
             Form1 frm1 = new Form1();
-            addCustomer();
-            frm1.addItemToComboBox(tariffNameTextbox.Text);
+            frm1.updateItemsInComboBox();
             frm1.Show();
         }
 
@@ -45,8 +47,8 @@ namespace CustomerBills
             type.rate_per_min = Convert.ToInt32(ratePerMinTextbox.Text);
             type.text_cost = Convert.ToInt32(textMessageCostTextbox.Text);
 
-            Tariffs tariff = new Tariffs();
-            tariff.addNewTariff(type);
+            Tariffs tariffs = new Tariffs();
+            tariffs.addNewTariff(type);
         }
     }
 }

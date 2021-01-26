@@ -149,10 +149,6 @@ namespace CustomerBills
             // 
             this.customerTypeComboBox.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.customerTypeComboBox.FormattingEnabled = true;
-            this.customerTypeComboBox.Items.AddRange(new object[] {
-            "Gold",
-            "Silver",
-            "Bronze"});
             this.customerTypeComboBox.Location = new System.Drawing.Point(189, 35);
             this.customerTypeComboBox.Name = "customerTypeComboBox";
             this.customerTypeComboBox.Size = new System.Drawing.Size(129, 26);

@@ -7,7 +7,7 @@ namespace CalculateBillsUnitTest
     [TestClass]
     public class UnitTestForGoldCustomer
     {
-        CustomerType gold_tariff = new GoldType();
+        CustomerType gold_tariff = new Gold();
         private int included_mins_gold = 1000;
         private int included_texts_gold = 800;
         private int price_gold = 30;
@@ -120,7 +120,7 @@ namespace CalculateBillsUnitTest
     [TestClass]
     public class UnitTestForSilverCustomer
     {
-        CustomerType silver_tariff = new SilverType();
+        CustomerType silver_tariff = new Silver();
         private int included_mins_silver = 500;
         private int included_texts_silver = 400;
         private int price_silver = 20;
@@ -233,7 +233,7 @@ namespace CalculateBillsUnitTest
     [TestClass]
     public class UnitTestForBronzeCustomer
     {
-        CustomerType bronze_tariff = new BronzeType();
+        CustomerType bronze_tariff = new Bronze();
         private int included_mins_bronze = 200;
         private int included_texts_bronze = 100;
         private int price_bronze = 10;

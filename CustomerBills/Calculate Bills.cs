@@ -19,9 +19,14 @@ namespace CustomerBills
             InitializeComponent();
         }
 
-        public void addItemToComboBox(object item)
+        public void updateItemsInComboBox()
         {
-            customerTypeComboBox.Items.Add(item);
+            Tariffs tariffs = new Tariffs();
+            customerTypeComboBox.Items.Clear();
+            for (int i = 0; i < tariffs.customer_type.Count; i++)
+            {
+                customerTypeComboBox.Items.Add(tariffs.customer_type[i]);
+            }
         }
         private void calculateButton_Click(object sender, EventArgs e)
         {
@@ -30,18 +35,9 @@ namespace CustomerBills
 
         private CustomerType selectingCustomerType()
         {
-            if (customerTypeComboBox.Text == "Gold")
-                return new GoldType();
-
-            else if (customerTypeComboBox.Text == "Silver")
-                return new SilverType();
-
-            else
-                return new BronzeType();
-
-            /*return new GoldType();*/                //**
+            Tariffs tariffs = new Tariffs();
+            return tariffs.customer_type[customerTypeComboBox.SelectedIndex];
         }
-
 
         private void clearButton_Click(object sender, EventArgs e)
         {
@@ -54,11 +50,12 @@ namespace CustomerBills
         {
             Tariff tariff = new Tariff();
             tariff.Show();
+            this.Hide();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            updateItemsInComboBox();
         }
     }
 }
