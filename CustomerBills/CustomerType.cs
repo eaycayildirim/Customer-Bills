@@ -6,106 +6,95 @@ using System.Threading.Tasks;
 
 namespace CustomerBills
 {
-    class Tariffs
+    public class CustomerType
     {
-        public List<CustomerType> customer_type = new List<CustomerType>() { new Gold(), new Silver(), new Bronze() };
-
-        public void addNewTariff(CustomerType type)
+        public CustomerType(string tariff_name, int monthly_cost, int included_mins, int included_texts, int first_tier_mins, double first_tier_rate, int second_tier_mins, double second_tier_rate, double rate_per_min, double text_cost)
         {
-            customer_type.Add(type);
+            this.tariff_name = tariff_name;
+            this.monthly_cost = monthly_cost;
+            this.included_mins = included_mins;
+            this.included_texts = included_texts;
+            this.first_tier_mins = first_tier_mins;
+            this.first_tier_rate = first_tier_rate;
+            this.second_tier_mins = second_tier_mins;
+            this.second_tier_rate = second_tier_rate;
+            this.rate_per_min = rate_per_min;
+            this.text_cost = text_cost;
         }
-    }
 
-    public class CustomerType    //i had to change this to public for test
-    {
-        private int monthly_cost=30;
-        public int included_mins;
-        public int included_texts;
-        public int first_tier_mins;
-        public double first_tier_rate;
-        public int second_tier_mins;
-        public double second_tier_rate;
-        public double rate_per_min;
-        public double text_cost;
-        public double calculate(double minutes, double texts)
+        #region Fields
+        private string tariff_name;
+        private int monthly_cost;
+        private int included_mins;
+        private int included_texts;
+        private int first_tier_mins;
+        private double first_tier_rate;
+        private int second_tier_mins;
+        private double second_tier_rate;
+        private double rate_per_min;
+        private double text_cost;
+        #endregion
+
+        static public List<CustomerType> customer_type = new List<CustomerType>() { new CustomerType("Gold", 30, 1000, 800, 500, 0.08, 400, 0.06, 0.05, 0.07), new CustomerType("Silver", 20, 500, 400, 300, 0.1, 150, 0.08, 0.06, 0.09), new CustomerType("Bronze", 10, 200, 100, 150, 0.12, 75, 0.1, 0.07, 0.11) };
+        public string getName()
         {
-            double cost = monthly_cost;
-            if (texts > included_texts)
+            return this.tariff_name;
+        }
+
+        private double tariffPrice()
+        {
+            return monthly_cost;
+        }
+
+        private double textsOverIncludedTexts(int texts)
+        {
+            double cost = 0;
+            if (texts - included_texts > 0)
             {
-                cost += ((texts - included_texts) * text_cost);
+                cost = (texts - included_texts) * text_cost;
             }
-
-            if (minutes > included_mins + first_tier_mins + second_tier_mins)
-            {
-                cost += ((first_tier_mins * first_tier_rate) + (second_tier_mins * second_tier_rate) + ((minutes - (included_mins + first_tier_mins + second_tier_mins)) * rate_per_min));
-                return cost;
-            }
-            else if (minutes > included_mins + first_tier_mins && minutes <= included_mins + first_tier_mins + second_tier_mins)
-            {
-                cost += ((first_tier_mins * first_tier_rate) + ((minutes - (included_mins + first_tier_mins)) * second_tier_rate));
-                return cost;
-            }
-            else if (minutes > included_mins && minutes <= included_mins + first_tier_mins)
-            {
-                cost += (minutes - included_mins) * first_tier_rate;
-                return cost;
-            }
-            else
-                return cost;
+            return cost;
         }
-    }
 
-    public class Gold : CustomerType
-    {
-        public Gold()
+        private double minutesInFirstTier(double minutes)
         {
-            //this.monthly_cost = 30;
-            this.included_mins = 1000;
-            this.included_texts = 800;
-            this.first_tier_mins = 500;
-            this.first_tier_rate = 0.08;
-            this.second_tier_mins = 400;
-            this.second_tier_rate = 0.06;
-            this.rate_per_min = 0.05;
-            this.text_cost = 0.07;
+            double cost = 0;
+            if (minutes - included_mins > 0 && minutes - included_mins <= first_tier_mins)
+            {
+                cost = (minutes - included_mins) * first_tier_rate;
+            }
+            return cost;
         }
-    }
 
-    public class Silver : CustomerType
-    {
-        public Silver()
+        private double minutesInSecondTier(double minutes)
         {
-            //this.monthly_cost = 20;
-            this.included_mins = 500;
-            this.included_texts = 400;
-            this.first_tier_mins = 300;
-            this.first_tier_rate = 0.1;
-            this.second_tier_mins = 150;
-            this.second_tier_rate = 0.08;
-            this.rate_per_min = 0.06;
-            this.text_cost = 0.09;
+            double cost = 0;
+            if (minutes - included_mins - first_tier_mins > 0 && minutes - included_mins - first_tier_mins <= second_tier_mins)
+            {
+                cost = (minutes - included_mins - first_tier_mins) * second_tier_rate;
+            }
+            return cost;
         }
-    }
 
-    public class Bronze : CustomerType
-    {
-        public Bronze()
+        private double minutesOverTiers(double minutes)
         {
-            //this.monthly_cost = 10;
-            this.included_mins = 200;
-            this.included_texts = 100;
-            this.first_tier_mins = 150;
-            this.first_tier_rate = 0.12;
-            this.second_tier_mins = 75;
-            this.second_tier_rate = 0.1;
-            this.rate_per_min = 0.07;
-            this.text_cost = 0.11;
+            double cost = 0;
+            if (minutes - included_mins - first_tier_mins > second_tier_mins)
+            {
+                cost = (minutes - included_mins - first_tier_mins - second_tier_mins) * rate_per_min;
+            }
+            return cost;
+        }
+
+        public double calculate(double minutes, int texts)
+        {
+            return tariffPrice() + textsOverIncludedTexts(texts) + minutesInFirstTier(minutes) + minutesInSecondTier(minutes) + minutesOverTiers(minutes);
         }
     }
 
-    public class Calculation    //i had to change this to public for test
+    public class Calculation
     {
-        static public double compute(double minutes, double texts, CustomerType type)
+        static public double compute(double minutes, int texts, CustomerType type)
         {
             return type.calculate(minutes, texts);
         }

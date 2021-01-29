@@ -12,8 +12,6 @@ namespace CustomerBills
 {
     public partial class Form1 : Form
     {
-        private CustomerType type;
-        
         public Form1()
         {
             InitializeComponent();
@@ -21,22 +19,21 @@ namespace CustomerBills
 
         public void updateItemsInComboBox()
         {
-            Tariffs tariffs = new Tariffs();
             customerTypeComboBox.Items.Clear();
-            for (int i = 0; i < tariffs.customer_type.Count; i++)
+            for (int i = 0; i < CustomerType.customer_type.Count; i++)
             {
-                customerTypeComboBox.Items.Add(tariffs.customer_type[i]);
+                customerTypeComboBox.Items.Add(CustomerType.customer_type[i].getName());
             }
         }
+
         private void calculateButton_Click(object sender, EventArgs e)
         {
-            totalBillLabel.Text = Calculation.compute(Convert.ToDouble(totalMinutesTextbox.Text), Convert.ToDouble(totalTextsTextbox.Text), selectingCustomerType()).ToString() + ("\u00A3");
+            totalBillLabel.Text = Calculation.compute(Convert.ToDouble(totalMinutesTextbox.Text), Convert.ToInt32(totalTextsTextbox.Text), selectingCustomerType()).ToString() + ("\u00A3");
         }
 
         private CustomerType selectingCustomerType()
         {
-            Tariffs tariffs = new Tariffs();
-            return tariffs.customer_type[customerTypeComboBox.SelectedIndex];
+            return CustomerType.customer_type[customerTypeComboBox.SelectedIndex];
         }
 
         private void clearButton_Click(object sender, EventArgs e)

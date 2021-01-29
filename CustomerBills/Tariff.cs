@@ -27,7 +27,7 @@ namespace CustomerBills
         private void addButton_Click(object sender, EventArgs e)
         {
             addCustomer();
-            this.Close();
+            this.Hide();
             Form1 frm1 = new Form1();
             frm1.updateItemsInComboBox();
             frm1.Show();
@@ -35,20 +35,11 @@ namespace CustomerBills
 
         public void addCustomer()
         {
-            CustomerType type = new CustomerType();
+            CustomerType type = new CustomerType(tariffNameTextbox.Text, Convert.ToInt32(monthlyCostTextbox.Text), Convert.ToInt32(includedMinsTextbox.Text), Convert.ToInt32(includedTextsTextbox.Text),
+                Convert.ToInt32(firstTierMinsTextbox.Text), Convert.ToInt32(firstTierRateTextbox.Text), Convert.ToInt32(secondTierMinsTextbox.Text), Convert.ToInt32(secondTierRateTextbox.Text),
+                Convert.ToInt32(ratePerMinTextbox.Text), Convert.ToInt32(textMessageCostTextbox.Text));
 
-            type.monthly_cost = Convert.ToInt32(monthlyCostTextbox.Text);
-            type.included_mins = Convert.ToInt32(includedMinsTextbox.Text);
-            type.included_texts = Convert.ToInt32(includedTextsTextbox.Text);
-            type.first_tier_mins = Convert.ToInt32(firstTierMinsTextbox.Text);
-            type.first_tier_rate = Convert.ToInt32(firstTierRateTextbox.Text);
-            type.second_tier_mins = Convert.ToInt32(secondTierMinsTextbox.Text);
-            type.second_tier_rate = Convert.ToInt32(secondTierRateTextbox.Text);
-            type.rate_per_min = Convert.ToInt32(ratePerMinTextbox.Text);
-            type.text_cost = Convert.ToInt32(textMessageCostTextbox.Text);
-
-            Tariffs tariffs = new Tariffs();
-            tariffs.addNewTariff(type);
+            CustomerType.customer_type.Add(type);
         }
     }
 }
