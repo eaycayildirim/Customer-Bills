@@ -96,12 +96,4 @@ namespace CustomerBills
             return tariffPrice() + textsOverIncludedTexts(texts) + minutesInFirstTier(minutes) + minutesInSecondTier(minutes) + minutesOverTiers(minutes);
         }
     }
-
-    public class Calculation
-    {
-        static public double compute(double minutes, int texts, CustomerType type)
-        {
-            return type.calculate(minutes, texts);
-        }
-    }
 }

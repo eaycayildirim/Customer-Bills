@@ -28,7 +28,9 @@ namespace CustomerBills
 
         private void calculateButton_Click(object sender, EventArgs e)
         {
-            totalBillLabel.Text = Calculation.compute(Convert.ToDouble(totalMinutesTextbox.Text), Convert.ToInt32(totalTextsTextbox.Text), selectingCustomerType()).ToString() + ("\u00A3");
+            var minutes = Convert.ToDouble(totalMinutesTextbox.Text);
+            var texts = Convert.ToInt32(totalTextsTextbox.Text);
+            totalBillLabel.Text = selectingCustomerType().calculate(minutes, texts).ToString()+ ("\u00A3");
         }
 
         private CustomerType selectingCustomerType()

@@ -23,13 +23,15 @@ namespace CalculateBillsUnitTest
         [TestMethod]
         public void No_Exceed()
         {
+            CustomerType type = new CustomerType("Text Type", monthly_cost, included_mins, included_texts, first_tier_mins, first_tier_rate, second_tier_mins, second_tier_rate, rate_per_min, text_cost);
+
             //Given
             int minutes = included_mins;
             int texts = included_texts;
             double expected = monthly_cost;
 
             //When
-            double actual = Calculation.compute(minutes, texts, CustomerType.customer_type[0]);
+            double actual = type.calculate(minutes, texts);
 
             //Then
             Assert.AreEqual(expected, actual, 0.0001);
@@ -38,6 +40,8 @@ namespace CalculateBillsUnitTest
         [TestMethod]
         public void Texts_Exceeded()
         {
+            CustomerType type = new CustomerType("Text Type", monthly_cost, included_mins, included_texts, first_tier_mins, first_tier_rate, second_tier_mins, second_tier_rate, rate_per_min, text_cost);
+
             //Given
             int extra_texts = 5;
             int minutes = included_mins;
@@ -45,7 +49,7 @@ namespace CalculateBillsUnitTest
             double expected = monthly_cost + (extra_texts * text_cost);
 
             //When
-            double actual = Calculation.compute(minutes, texts, CustomerType.customer_type[0]);
+            double actual = type.calculate(minutes, texts);
 
             //Then
             Assert.AreEqual(expected, actual, 0.0001);
@@ -54,6 +58,8 @@ namespace CalculateBillsUnitTest
         [TestMethod]
         public void Calls_Exceeded_In_First_Tier()
         {
+            CustomerType type = new CustomerType("Text Type", monthly_cost, included_mins, included_texts, first_tier_mins, first_tier_rate, second_tier_mins, second_tier_rate, rate_per_min, text_cost);
+
             //Given
             int extra_minutes = 100;
             int minutes = included_mins + extra_minutes;
@@ -61,7 +67,7 @@ namespace CalculateBillsUnitTest
             double expected = monthly_cost + (extra_minutes * first_tier_rate);
 
             //When
-            double actual = Calculation.compute(minutes, texts, CustomerType.customer_type[0]);
+            double actual = type.calculate(minutes, texts);
 
             //Then
             Assert.AreEqual(expected, actual, 0.0001);
@@ -70,6 +76,8 @@ namespace CalculateBillsUnitTest
         [TestMethod]
         public void Calls_Exceeded_In_Second_Tier()
         {
+            CustomerType type = new CustomerType("Text Type", monthly_cost, included_mins, included_texts, first_tier_mins, first_tier_rate, second_tier_mins, second_tier_rate, rate_per_min, text_cost);
+
             //Given
             int extra_minutes = 100;
             int minutes = included_mins + first_tier_mins + extra_minutes;
@@ -77,7 +85,7 @@ namespace CalculateBillsUnitTest
             double expected = monthly_cost + total_first_tier_cost + (extra_minutes * second_tier_rate);
 
             //When
-            double actual = Calculation.compute(minutes, texts, CustomerType.customer_type[0]);
+            double actual = type.calculate(minutes, texts);
 
             //Then
             Assert.AreEqual(expected, actual, 0.0001);
@@ -86,6 +94,8 @@ namespace CalculateBillsUnitTest
         [TestMethod]
         public void Calls_Exceeded_Rate_Per_Min()
         {
+            CustomerType type = new CustomerType("Text Type", monthly_cost, included_mins, included_texts, first_tier_mins, first_tier_rate, second_tier_mins, second_tier_rate, rate_per_min, text_cost);
+
             //Given
             int extra_mins = 100;
             int minutes = included_mins + first_tier_mins + second_tier_mins + extra_mins;
@@ -93,7 +103,7 @@ namespace CalculateBillsUnitTest
             double expected = monthly_cost + total_first_tier_cost + total_second_tier_cost + (extra_mins * rate_per_min);
 
             //When
-            double actual = Calculation.compute(minutes, texts, CustomerType.customer_type[0]);
+            double actual = type.calculate(minutes, texts);
 
             //Then
             Assert.AreEqual(expected, actual, 0.0001);
@@ -102,6 +112,8 @@ namespace CalculateBillsUnitTest
         [TestMethod]
         public void Calls_And_Texts_Exceeded()
         {
+            CustomerType type = new CustomerType("Text Type", monthly_cost, included_mins, included_texts, first_tier_mins, first_tier_rate, second_tier_mins, second_tier_rate, rate_per_min, text_cost);
+
             //Given
             int extra_mins = 10;
             int extra_texts = 20;
@@ -110,7 +122,7 @@ namespace CalculateBillsUnitTest
             double expected = monthly_cost + (extra_mins * first_tier_rate) + (extra_texts * text_cost);
 
             //When
-            double actual = Calculation.compute(minutes, texts, CustomerType.customer_type[0]);
+            double actual = type.calculate(minutes, texts);
 
             //Then
             Assert.AreEqual(expected, actual, 0.0001);
