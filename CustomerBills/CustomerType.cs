@@ -59,30 +59,35 @@ namespace CustomerBills
         private double minutesInFirstTier(double minutes)
         {
             double cost = 0;
-            if (minutes - included_mins > 0 && minutes - included_mins <= first_tier_mins)
-            {
-                cost = (minutes - included_mins) * first_tier_rate;
-            }
+            double mins_difference = minutes - included_mins;
+            if (mins_difference > 0 && mins_difference <= first_tier_mins)
+                cost = mins_difference * first_tier_rate;
+
+            else if(mins_difference > 0 && mins_difference > first_tier_mins)
+                cost = first_tier_mins * first_tier_rate;
+
             return cost;
         }
 
         private double minutesInSecondTier(double minutes)
         {
             double cost = 0;
-            if (minutes - included_mins - first_tier_mins > 0 && minutes - included_mins - first_tier_mins <= second_tier_mins)
-            {
-                cost = (minutes - included_mins - first_tier_mins) * second_tier_rate;
-            }
+            double mins_difference = minutes - included_mins;
+            if (mins_difference > first_tier_mins && mins_difference - first_tier_mins <= second_tier_mins)
+                cost = (mins_difference - first_tier_mins) * second_tier_rate;
+
+            else if (mins_difference > first_tier_mins && mins_difference - first_tier_mins > second_tier_mins)
+                cost = second_tier_mins * second_tier_rate;
+
             return cost;
         }
 
         private double minutesOverTiers(double minutes)
         {
             double cost = 0;
-            if (minutes - included_mins - first_tier_mins > second_tier_mins)
-            {
-                cost = (minutes - included_mins - first_tier_mins - second_tier_mins) * rate_per_min;
-            }
+            double mins_difference = minutes - included_mins;
+            if (mins_difference - first_tier_mins > second_tier_mins)
+                cost = (mins_difference - first_tier_mins - second_tier_mins) * rate_per_min;
             return cost;
         }
 

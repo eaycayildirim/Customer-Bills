@@ -11,12 +11,12 @@ namespace CalculateBillsUnitTest
         private int included_texts = 800;
         private int monthly_cost = 30;
         private int first_tier_mins = 500;
+        private float first_tier_rate = 0.08f;
         private int second_tier_mins = 400;
+        private float second_tier_rate = 0.06f;
         private float rate_per_min = 0.05f;
         private float text_cost = 0.07f;
-
-        private float price_after_first_tier = 0.08f;
-        private float price_after_second_tier = 0.06f;
+        
         private float total_first_tier_cost = 40f;
         private float total_second_tier_cost = 24f;
 
@@ -58,7 +58,7 @@ namespace CalculateBillsUnitTest
             int extra_minutes = 100;
             int minutes = included_mins + extra_minutes;
             int texts = included_texts;
-            double expected = monthly_cost + (extra_minutes * price_after_first_tier);
+            double expected = monthly_cost + (extra_minutes * first_tier_rate);
 
             //When
             double actual = Calculation.compute(minutes, texts, CustomerType.customer_type[0]);
@@ -74,7 +74,7 @@ namespace CalculateBillsUnitTest
             int extra_minutes = 100;
             int minutes = included_mins + first_tier_mins + extra_minutes;
             int texts = included_texts;
-            double expected = monthly_cost + total_first_tier_cost + (extra_minutes * price_after_second_tier);
+            double expected = monthly_cost + total_first_tier_cost + (extra_minutes * second_tier_rate);
 
             //When
             double actual = Calculation.compute(minutes, texts, CustomerType.customer_type[0]);
@@ -107,7 +107,7 @@ namespace CalculateBillsUnitTest
             int extra_texts = 20;
             int minutes = included_mins + extra_mins;
             int texts = included_texts + extra_texts;
-            double expected = monthly_cost + (extra_mins * price_after_first_tier) + (extra_texts * text_cost);
+            double expected = monthly_cost + (extra_mins * first_tier_rate) + (extra_texts * text_cost);
 
             //When
             double actual = Calculation.compute(minutes, texts, CustomerType.customer_type[0]);
