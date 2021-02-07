@@ -53,6 +53,7 @@
     <Compile Include="Calculate Bills.Designer.cs">
       <DependentUpon>Calculate Bills.cs</DependentUpon>
     </Compile>
+    <Compile Include="FixtureCustomerType.cs" />
     <Compile Include="Tariff.cs">
       <SubType>Form</SubType>
     </Compile>
