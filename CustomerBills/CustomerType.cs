@@ -46,7 +46,7 @@ namespace CustomerBills
             return monthly_cost;
         }
 
-        private double textsOverIncludedTexts(int texts)
+        private double costForTexts(int texts)
         {
             double cost = 0;
             if (texts - included_texts > 0)
@@ -56,7 +56,7 @@ namespace CustomerBills
             return cost;
         }
 
-        private double minutesInFirstTier(double minutes)
+        private double costForFirstTier(double minutes)
         {
             double cost = 0;
             double mins_difference = minutes - included_mins;
@@ -69,7 +69,7 @@ namespace CustomerBills
             return cost;
         }
 
-        private double minutesInSecondTier(double minutes)
+        private double costForSecondTier(double minutes)
         {
             double cost = 0;
             double mins_difference = minutes - included_mins;
@@ -82,7 +82,7 @@ namespace CustomerBills
             return cost;
         }
 
-        private double minutesOverTiers(double minutes)
+        private double costForMinutesOverTiers(double minutes)
         {
             double cost = 0;
             double mins_difference = minutes - included_mins;
@@ -93,7 +93,7 @@ namespace CustomerBills
 
         public double calculate(double minutes, int texts)
         {
-            return tariffPrice() + textsOverIncludedTexts(texts) + minutesInFirstTier(minutes) + minutesInSecondTier(minutes) + minutesOverTiers(minutes);
+            return tariffPrice() + costForTexts(texts) + costForFirstTier(minutes) + costForSecondTier(minutes) + costForMinutesOverTiers(minutes);
         }
     }
 }
