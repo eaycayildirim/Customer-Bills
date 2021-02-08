@@ -12,77 +12,49 @@ namespace CustomerBills
 {
     public partial class Form1 : Form
     {
-        private CustomerType type;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void updateItemsInComboBox()
         {
-            if (Are_Textboxes_Integers() && Are_Textboxes_Bigger_Than_Zero())
+            customerTypeComboBox.Items.Clear();
+            for (int i = 0; i < CustomerType.customer_type.Count; i++)
             {
-                label5.Text = (Calculation.compute(Convert.ToInt32(textBox1.Text), Convert.ToInt32(textBox2.Text), selectingCustomerType())).ToString() + ("\u00A3");
+                customerTypeComboBox.Items.Add(CustomerType.customer_type[i].getName());
             }
-                
-            else
-                MessageBox.Show("Please provide valid numbers only.", "ERROR", MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
 
-        private bool Are_Textboxes_Integers()
+        private void calculateButton_Click(object sender, EventArgs e)
         {
-            int minutes_converted_to_int;
-            int texts_converted_to_int;
-            if (int.TryParse(textBox1.Text, out minutes_converted_to_int) && int.TryParse(textBox1.Text, out texts_converted_to_int))
-                return true;
-            else
-                return false;
-        }
-        private bool Are_Textboxes_Bigger_Than_Zero()
-        {
-            try
-            {
-                int minutes_converted_to_int = Convert.ToInt32(textBox1.Text);
-                int texts_converted_to_int = Convert.ToInt32(textBox2.Text);
-                if (minutes_converted_to_int > 0 && texts_converted_to_int > 0)
-                    return true;
-                else
-                    return false;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            var minutes = Convert.ToDouble(totalMinutesTextbox.Text);
+            var texts = Convert.ToInt32(totalTextsTextbox.Text);
+            totalBillLabel.Text = selectingCustomerType().calculate(minutes, texts).ToString()+ ("\u00A3");
         }
 
         private CustomerType selectingCustomerType()
         {
-            if (comboBox1.Text == "Gold")
-            {
-                CustomerType type = new GoldType();
-            }
-            else if (comboBox1.Text == "Silver")
-            {
-                CustomerType type = new SilverType();
-            }
-            else if (comboBox1.Text == "Bronze")
-            {
-                CustomerType type = new BronzeType();
-            }
-            return type;
+            return CustomerType.customer_type[customerTypeComboBox.SelectedIndex];
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void clearButton_Click(object sender, EventArgs e)
         {
-            textBox1.Clear();
-            textBox2.Clear();
-            label5.Text = "-";
+            totalMinutesTextbox.Clear();
+            totalTextsTextbox.Clear();
+            totalBillLabel.Text = "-";
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void addTariffButton_Click(object sender, EventArgs e)
         {
             Tariff tariff = new Tariff();
             tariff.Show();
+            this.Hide();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            updateItemsInComboBox();
         }
     }
 }

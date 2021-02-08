@@ -16,7 +16,7 @@ namespace CustomerBills
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());     //i wanted to change this Form1 name, but i couldn't
+            Application.Run(new Form1());
 
 
         }
