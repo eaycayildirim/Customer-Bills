@@ -22,30 +22,17 @@ namespace CustomerBills
         {
             customerTypeComboBox.Items.Clear();
 
-
-
-            //string[] lines = File.ReadAllLines(file_path);
-            //for (int i = 0; i < lines.Length; i++)
-            //{
-            //    customerTypeComboBox.Items.Add(CustomerType.customer_type[i].getName());
-            //}
-
-            string file_path = @"C:\Users\Sabreden Derviş\source\repos\Customer-Bills\CustomerBills.csv";
+            string file_path = "CustomersBills.csv";
             StreamReader reader = new StreamReader(File.OpenRead(file_path));
 
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
+                line = line.Replace('"',' ').Trim();
                 var values = line.Split(';');
 
                 customerTypeComboBox.Items.Add(values[0]);
             }
-
-
-            //for (int i = 0; i < CustomerType.customer_type.Count; i++)
-            //{
-            //    customerTypeComboBox.Items.Add(CustomerType.customer_type[i].getName());
-            //}
         }
 
         private void calculateButton_Click(object sender, EventArgs e)
@@ -76,6 +63,7 @@ namespace CustomerBills
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            CustomerType.readAndAddTypesFromFile();
             updateItemsInComboBox();
         }
     }
