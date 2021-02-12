@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace CustomerBills
 {
@@ -20,10 +21,31 @@ namespace CustomerBills
         public void updateItemsInComboBox()
         {
             customerTypeComboBox.Items.Clear();
-            for (int i = 0; i < CustomerType.customer_type.Count; i++)
+
+
+
+            //string[] lines = File.ReadAllLines(file_path);
+            //for (int i = 0; i < lines.Length; i++)
+            //{
+            //    customerTypeComboBox.Items.Add(CustomerType.customer_type[i].getName());
+            //}
+
+            string file_path = @"C:\Users\Sabreden Derviş\source\repos\Customer-Bills\CustomerBills.csv";
+            StreamReader reader = new StreamReader(File.OpenRead(file_path));
+
+            while (!reader.EndOfStream)
             {
-                customerTypeComboBox.Items.Add(CustomerType.customer_type[i].getName());
+                var line = reader.ReadLine();
+                var values = line.Split(';');
+
+                customerTypeComboBox.Items.Add(values[0]);
             }
+
+
+            //for (int i = 0; i < CustomerType.customer_type.Count; i++)
+            //{
+            //    customerTypeComboBox.Items.Add(CustomerType.customer_type[i].getName());
+            //}
         }
 
         private void calculateButton_Click(object sender, EventArgs e)

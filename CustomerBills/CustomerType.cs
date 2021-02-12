@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CustomerBills
 {
@@ -35,7 +32,7 @@ namespace CustomerBills
         private double text_cost;
         #endregion
 
-        static public List<CustomerType> customer_type = new List<CustomerType>() { new CustomerType("Gold", 30, 1000, 800, 500, 0.08, 400, 0.06, 0.05, 0.07), new CustomerType("Silver", 20, 500, 400, 300, 0.1, 150, 0.08, 0.06, 0.09), new CustomerType("Bronze", 10, 200, 100, 150, 0.12, 75, 0.1, 0.07, 0.11) };
+        static public List<CustomerType> customer_type = new List<CustomerType>(); //{ new CustomerType("Gold", 30, 1000, 800, 500, 0.08, 400, 0.06, 0.05, 0.07), new CustomerType("Silver", 20, 500, 400, 300, 0.1, 150, 0.08, 0.06, 0.09), new CustomerType("Bronze", 10, 200, 100, 150, 0.12, 75, 0.1, 0.07, 0.11) };
         public string getName()
         {
             return this.tariff_name;
