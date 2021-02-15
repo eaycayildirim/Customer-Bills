@@ -27,14 +27,14 @@ namespace CustomerBills
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            addCustomer();
+            writeNewCustomer();
             deleteCustomerList();
             this.Hide();
             Form1 frm1 = new Form1();
             frm1.Show();
         }
 
-        private void addCustomer()
+        private void writeNewCustomer()
         {
             string file_path = "CustomersBills.csv";
             var lines = File.ReadAllLines(file_path);
