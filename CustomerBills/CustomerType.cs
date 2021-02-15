@@ -52,7 +52,7 @@ namespace CustomerBills
 
         public string getName()
         {
-            return this.tariff_name.Replace('"', ' ').Trim();
+            return this.tariff_name.Replace("\"","");
         }
 
         private double tariffPrice()
