@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace CustomerBills
 {
@@ -27,19 +28,30 @@ namespace CustomerBills
         private void addButton_Click(object sender, EventArgs e)
         {
             addCustomer();
+            deleteCustomerList();
             this.Hide();
             Form1 frm1 = new Form1();
-            frm1.updateItemsInComboBox();
             frm1.Show();
         }
 
-        public void addCustomer()
+        private void addCustomer()
         {
-            CustomerType type = new CustomerType(tariffNameTextbox.Text, Convert.ToInt32(monthlyCostTextbox.Text), Convert.ToInt32(includedMinsTextbox.Text), Convert.ToInt32(includedTextsTextbox.Text),
-                Convert.ToInt32(firstTierMinsTextbox.Text), Convert.ToInt32(firstTierRateTextbox.Text), Convert.ToInt32(secondTierMinsTextbox.Text), Convert.ToInt32(secondTierRateTextbox.Text),
-                Convert.ToInt32(ratePerMinTextbox.Text), Convert.ToInt32(textMessageCostTextbox.Text));
+            string file_path = "CustomersBills.csv";
+            var lines = File.ReadAllLines(file_path);
+            var lines_array = new List<string>(lines);
 
-            CustomerType.customer_type.Add(type);
+            string csv = string.Join(";", "\"" + tariffNameTextbox.Text + "\"", monthlyCostTextbox.Text, includedMinsTextbox.Text, includedTextsTextbox.Text, firstTierMinsTextbox.Text, firstTierRateTextbox.Text, secondTierMinsTextbox.Text, secondTierRateTextbox.Text, ratePerMinTextbox.Text, textMessageCostTextbox.Text);
+
+            lines_array.Add(csv);
+            lines = lines_array.ToArray();
+
+            File.WriteAllLines(file_path, lines);
         }
+
+        private void deleteCustomerList()
+        {
+            CustomerType.customer_type.Clear();
+        }
+
     }
 }

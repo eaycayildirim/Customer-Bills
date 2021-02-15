@@ -22,16 +22,9 @@ namespace CustomerBills
         {
             customerTypeComboBox.Items.Clear();
 
-            string file_path = "CustomersBills.csv";
-            StreamReader reader = new StreamReader(File.OpenRead(file_path));
-
-            while (!reader.EndOfStream)
+            for (int i = 0; i < CustomerType.customer_type.Count; i++)
             {
-                var line = reader.ReadLine();
-                line = line.Replace('"',' ').Trim();
-                var values = line.Split(';');
-
-                customerTypeComboBox.Items.Add(values[0]);
+                customerTypeComboBox.Items.Add(CustomerType.customer_type[i].getName());
             }
         }
 
@@ -63,7 +56,7 @@ namespace CustomerBills
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            CustomerType.readAndAddTypesFromFile();
+            CustomerType.addTypesFromFile();
             updateItemsInComboBox();
         }
     }

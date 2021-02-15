@@ -35,7 +35,7 @@ namespace CustomerBills
 
         static public List<CustomerType> customer_type = new List<CustomerType>(); //{ new CustomerType("Gold", 30, 1000, 800, 500, 0.08, 400, 0.06, 0.05, 0.07), new CustomerType("Silver", 20, 500, 400, 300, 0.1, 150, 0.08, 0.06, 0.09), new CustomerType("Bronze", 10, 200, 100, 150, 0.12, 75, 0.1, 0.07, 0.11) };
 
-        public static void readAndAddTypesFromFile()
+        public static void addTypesFromFile()
         {
             string file_path = "CustomersBills.csv";
             StreamReader reader = new StreamReader(File.OpenRead(file_path));
@@ -44,14 +44,15 @@ namespace CustomerBills
             {
                 var line = reader.ReadLine();
                 string[] values = line.Split(';');
-
-                customer_type.Add(new CustomerType(values[0], Convert.ToInt32(values[1]), Convert.ToInt32(values[2]), Convert.ToInt32(values[3]), Convert.ToInt32(values[4]), Convert.ToInt32(values[5]), Convert.ToInt32(values[6]), Convert.ToInt32(values[7]), Convert.ToInt32(values[8]), Convert.ToInt32(values[9])));
+                
+                customer_type.Add(new CustomerType(values[0], Convert.ToInt32(values[1]), Convert.ToInt32(values[2]), Convert.ToInt32(values[3]), Convert.ToInt32(values[4]), Convert.ToDouble(values[5]), Convert.ToInt32(values[6]), Convert.ToDouble(values[7]), Convert.ToDouble(values[8]), Convert.ToDouble(values[9])));
             }
+            reader.Close();
         }
 
         public string getName()
         {
-            return this.tariff_name;
+            return this.tariff_name.Replace('"', ' ').Trim();
         }
 
         private double tariffPrice()
