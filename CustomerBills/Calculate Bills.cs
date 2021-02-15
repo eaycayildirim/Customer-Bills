@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace CustomerBills
 {
@@ -20,6 +21,7 @@ namespace CustomerBills
         public void updateItemsInComboBox()
         {
             customerTypeComboBox.Items.Clear();
+
             for (int i = 0; i < CustomerType.customer_type.Count; i++)
             {
                 customerTypeComboBox.Items.Add(CustomerType.customer_type[i].getName());
@@ -54,6 +56,7 @@ namespace CustomerBills
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            CustomerType.addTypesToListFromFile();
             updateItemsInComboBox();
         }
     }
