@@ -36,16 +36,11 @@ namespace CustomerBills
 
         private void writeNewCustomer()
         {
-            string file_path = "CustomersBills.csv";
-            var lines = File.ReadAllLines(file_path);
-            var lines_array = new List<string>(lines);
+            //CSV csv = new CSV();
+            //csv.writeCustomer(tariffNameTextbox.Text, monthlyCostTextbox.Text, includedMinsTextbox.Text, includedTextsTextbox.Text, firstTierMinsTextbox.Text, firstTierRateTextbox.Text, secondTierMinsTextbox.Text, secondTierRateTextbox.Text, ratePerMinTextbox.Text, textMessageCostTextbox.Text);
 
-            string csv = string.Join(";", "\"" + tariffNameTextbox.Text + "\"", monthlyCostTextbox.Text, includedMinsTextbox.Text, includedTextsTextbox.Text, firstTierMinsTextbox.Text, firstTierRateTextbox.Text, secondTierMinsTextbox.Text, secondTierRateTextbox.Text, ratePerMinTextbox.Text, textMessageCostTextbox.Text);
-
-            lines_array.Add(csv);
-            lines = lines_array.ToArray();
-
-            File.WriteAllLines(file_path, lines);
+            XML xml = new XML();
+            xml.writeCustomer(tariffNameTextbox.Text, monthlyCostTextbox.Text, includedMinsTextbox.Text, includedTextsTextbox.Text, firstTierMinsTextbox.Text, firstTierRateTextbox.Text, secondTierMinsTextbox.Text, secondTierRateTextbox.Text, ratePerMinTextbox.Text, textMessageCostTextbox.Text);
         }
 
         private void deleteCustomerList()
